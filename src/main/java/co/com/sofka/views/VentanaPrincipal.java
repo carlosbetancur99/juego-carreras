@@ -9,7 +9,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     public VentanaPrincipal() {
         initComponents();
-        
+
         crearPistas();
     }
 
@@ -17,15 +17,34 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnPrueba = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        seleccionJugadores = new javax.swing.JComboBox<>();
+        btnIniciar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
-        btnPrueba.setText("Prueba");
-        btnPrueba.setName("btnPrueba"); // NOI18N
-        btnPrueba.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setText("Juego de Carros");
+
+        seleccionJugadores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2 jugadores", "3 jugadores", "4 jugadores" }));
+        seleccionJugadores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPruebaActionPerformed(evt);
+                seleccionJugadoresActionPerformed(evt);
+            }
+        });
+
+        btnIniciar.setText("Iniciar nuevo Juego");
+        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarActionPerformed(evt);
+            }
+        });
+
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
             }
         });
 
@@ -34,27 +53,68 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(158, 158, 158)
-                .addComponent(btnPrueba)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(btnIniciar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(seleccionJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(btnSalir)))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(btnPrueba)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(jLabel1)
+                .addGap(28, 28, 28)
+                .addComponent(seleccionJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(btnIniciar)
+                .addGap(18, 18, 18)
+                .addComponent(btnSalir)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnPruebaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPruebaActionPerformed
-        Dado dado = new Dado();
-        dado.lanzar();
-        
-        JOptionPane.showMessageDialog(this, dado.getValor());
-    }//GEN-LAST:event_btnPruebaActionPerformed
+    private void seleccionJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionJugadoresActionPerformed
+
+    }//GEN-LAST:event_seleccionJugadoresActionPerformed
+
+    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+        String itemSeleecionado = (String) seleccionJugadores.getSelectedItem();
+        if ("2 jugadores".equals(itemSeleecionado)) {
+
+            VentanaConfiguracionesJuego vc = new VentanaConfiguracionesJuego(2);
+            vc.setVisible(true);
+            this.setVisible(false);
+
+        }
+
+        if ("3 jugadores".equals(itemSeleecionado)) {
+
+            JOptionPane.showMessageDialog(null, "has seleccionado tres jugadores");
+
+        }
+
+        if ("4 jugadores".equals(itemSeleecionado)) {
+
+            JOptionPane.showMessageDialog(null, "has seleccionado cuatro jugadores");
+
+        }
+
+    }//GEN-LAST:event_btnIniciarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -82,18 +142,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnPrueba;
+    private javax.swing.JButton btnIniciar;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> seleccionJugadores;
     // End of variables declaration//GEN-END:variables
 
     private void crearPistas() {
-        
-        
+
 //        
 //        Carril carril1 = new Carril();
 //        
 //        Pista pista1 = new Pista();
-        
-        
-        
     }
 }
