@@ -1,15 +1,18 @@
-package co.com.sofka.views;
+package com.sofka.views;
 
-import co.com.sofka.models.Carril;
-import co.com.sofka.models.Dado;
-import co.com.sofka.models.Pista;
+import com.sofka.views.paneles.PanelSeisJugadores;
+import com.sofka.views.paneles.PanelCincoJugadores;
+import com.sofka.views.paneles.PanelCuatroJugadores;
+import com.sofka.models.Carril;
+import com.sofka.models.Dado;
+import com.sofka.models.Pista;
 import javax.swing.JOptionPane;
 
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     public VentanaPrincipal() {
         initComponents();
-
+         this.setLocationRelativeTo(null);
         crearPistas();
     }
 
@@ -21,13 +24,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         seleccionJugadores = new javax.swing.JComboBox<>();
         btnIniciar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Juego de Carreras");
         setResizable(false);
 
+        jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jLabel1.setText("Juego de Carros");
 
-        seleccionJugadores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2 jugadores", "3 jugadores", "4 jugadores" }));
+        seleccionJugadores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "4 jugadores", "5 jugadores", "6 jugadores" }));
         seleccionJugadores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 seleccionJugadoresActionPerformed(evt);
@@ -48,37 +55,54 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        jLabel2.setText("Eliga el numero de jugadores para iniciar el juego");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 9, Short.MAX_VALUE)
+                        .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(btnIniciar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(seleccionJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(btnSalir)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(62, 62, 62)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(95, 95, 95)
+                                .addComponent(seleccionJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(71, 71, 71)
+                                .addComponent(btnIniciar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(107, 107, 107)
+                                .addComponent(btnSalir)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(29, 29, 29)
                 .addComponent(jLabel1)
-                .addGap(28, 28, 28)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel2)
+                .addGap(2, 2, 2)
                 .addComponent(seleccionJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(btnIniciar)
                 .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(btnIniciar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalir)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -90,23 +114,33 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         String itemSeleecionado = (String) seleccionJugadores.getSelectedItem();
-        if ("2 jugadores".equals(itemSeleecionado)) {
+        if ("4 jugadores".equals(itemSeleecionado)) {
 
-            VentanaConfiguracionesJuego vc = new VentanaConfiguracionesJuego(2);
+            VentanaConfiguracionesJuego vc = new VentanaConfiguracionesJuego();
+            PanelCuatroJugadores p4 = new PanelCuatroJugadores();
+            vc.setContentPane(p4);
             vc.setVisible(true);
             this.setVisible(false);
 
         }
 
-        if ("3 jugadores".equals(itemSeleecionado)) {
+        if ("5 jugadores".equals(itemSeleecionado)) {
 
-            JOptionPane.showMessageDialog(null, "has seleccionado tres jugadores");
+           VentanaConfiguracionesJuego vc = new VentanaConfiguracionesJuego();
+            PanelCincoJugadores p5 = new PanelCincoJugadores();
+            vc.setContentPane(p5);
+            vc.setVisible(true);
+            this.setVisible(false);
 
         }
 
-        if ("4 jugadores".equals(itemSeleecionado)) {
+        if ("6 jugadores".equals(itemSeleecionado)) {
 
-            JOptionPane.showMessageDialog(null, "has seleccionado cuatro jugadores");
+            VentanaConfiguracionesJuego vc = new VentanaConfiguracionesJuego();
+            PanelSeisJugadores p6 = new PanelSeisJugadores();
+            vc.setContentPane(p6);
+            vc.setVisible(true);
+            this.setVisible(false);
 
         }
 
@@ -145,6 +179,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnIniciar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JComboBox<String> seleccionJugadores;
     // End of variables declaration//GEN-END:variables
 

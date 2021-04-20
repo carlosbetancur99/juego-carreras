@@ -1,4 +1,4 @@
-package co.com.sofka.models;
+package com.sofka.models;
 
 import java.util.Random;
 

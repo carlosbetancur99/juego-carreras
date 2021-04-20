@@ -1,4 +1,4 @@
-package co.com.sofka.usecase;
+package com.sofka.usecase;
 
 import java.util.Collections;
 import java.util.List;

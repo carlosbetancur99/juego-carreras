@@ -1,4 +1,4 @@
-package co.com.sofka.models;
+package com.sofka.models;
 
 public class Carril {
     private Carro carro;
