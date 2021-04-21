@@ -8,7 +8,11 @@ public class Dado {
     private static final Integer LIMITED_MAXIMO = 6;
     
     // Atributos
-    private Integer valor;   
+    private Integer valor;  
+
+    public Dado() {
+        this.valor = 0;
+    }   
     
     // Metodos
     public Integer getValor() {
@@ -19,8 +23,7 @@ public class Dado {
         this.valor = valor;
     }
     
-    public void lanzar(){        
-        Random random = new Random();        
-        this.valor = random.nextInt((LIMITED_MAXIMO - LIMITED_MINIMO) + 1) + LIMITED_MINIMO;
+    public void lanzar(){                
+        this.valor = new Random().nextInt((LIMITED_MAXIMO - LIMITED_MINIMO) + 1) + LIMITED_MINIMO;
     }
 }

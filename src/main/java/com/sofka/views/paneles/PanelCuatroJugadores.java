@@ -1,22 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.sofka.views.paneles;
 
-/**
- *
- * @author CARLOSALBERTOBETANCU
- */
-public class PanelCuatroJugadores extends javax.swing.JPanel {
+import com.sofka.models.Pista;
+import com.sofka.usecase.GenerarPistaUseCase;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
-    /**
-     * Creates new form PanelCuatroJugadores
-     */
+public class PanelCuatroJugadores extends javax.swing.JPanel {
+    
+    private Pista pista;
+
     public PanelCuatroJugadores() {
         initComponents();
+        pista = GenerarPistaUseCase.generarPista(4);        
+        lblNombrePista.setText(pista.getNombrePista());   
+        lblNumeroCarriles.setText(String.valueOf(pista.getCarriles().size()));
     }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,8 +40,8 @@ public class PanelCuatroJugadores extends javax.swing.JPanel {
         txtMarca2 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         btnIniciarCarrera = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lblNombrePista = new javax.swing.JLabel();
+        lblNumeroCarriles = new javax.swing.JLabel();
         txtCarro1 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
@@ -90,10 +91,15 @@ public class PanelCuatroJugadores extends javax.swing.JPanel {
 
         btnIniciarCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnIniciarCarrera.setText("Iniciar Carrera");
+        btnIniciarCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarCarreraActionPerformed(evt);
+            }
+        });
 
-        jLabel9.setText("Nombre de la Pista");
+        lblNombrePista.setText("Nombre de la Pista");
 
-        jLabel11.setText("Número de carriles");
+        lblNumeroCarriles.setText("Número de carriles");
 
         txtCarro1.setText("carro1");
         txtCarro1.addActionListener(new java.awt.event.ActionListener() {
@@ -222,8 +228,13 @@ public class PanelCuatroJugadores extends javax.swing.JPanel {
                         .addGap(85, 85, 85)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(55, Short.MAX_VALUE))
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(lblNombrePista))))
+                .addContainerGap(62, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,19 +242,14 @@ public class PanelCuatroJugadores extends javax.swing.JPanel {
                             .addGap(249, 249, 249)
                             .addComponent(jLabel8))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(84, 84, 84)
-                            .addComponent(jLabel9)
-                            .addGap(77, 77, 77)
-                            .addComponent(jLabel11))
+                            .addGap(250, 250, 250)
+                            .addComponent(lblNumeroCarriles))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(255, 255, 255)
                             .addComponent(btnIniciarCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(249, 249, 249)
-                            .addComponent(jLabel1))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(69, 69, 69)
-                            .addComponent(jLabel10)))
+                            .addComponent(jLabel1)))
                     .addContainerGap(246, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -288,7 +294,11 @@ public class PanelCuatroJugadores extends javax.swing.JPanel {
                 .addComponent(jLabel21)
                 .addGap(75, 75, 75)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(lblNombrePista)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel10)
+                .addContainerGap(141, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(16, 16, 16)
@@ -296,12 +306,8 @@ public class PanelCuatroJugadores extends javax.swing.JPanel {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 431, Short.MAX_VALUE)
                     .addComponent(jLabel8)
                     .addGap(33, 33, 33)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel9)
-                        .addComponent(jLabel11))
-                    .addGap(39, 39, 39)
-                    .addComponent(jLabel10)
-                    .addGap(25, 25, 25)
+                    .addComponent(lblNumeroCarriles)
+                    .addGap(78, 78, 78)
                     .addComponent(btnIniciarCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(17, 17, 17)))
         );
@@ -331,12 +337,22 @@ public class PanelCuatroJugadores extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtConductor4ActionPerformed
 
+    private void btnIniciarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarCarreraActionPerformed
+        // validar antes
+        List<String> nombresConductores = new ArrayList();
+        nombresConductores.add(txtConductor1.getText());
+        nombresConductores.add(txtConductor2.getText());
+        nombresConductores.add(txtConductor3.getText());
+        nombresConductores.add(txtConductor4.getText());
+        
+        
+    }//GEN-LAST:event_btnIniciarCarreraActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciarCarrera;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -351,12 +367,13 @@ public class PanelCuatroJugadores extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel lblNombrePista;
+    private javax.swing.JLabel lblNumeroCarriles;
     private javax.swing.JTextField txtCarro1;
     private javax.swing.JTextField txtConductor1;
     private javax.swing.JTextField txtConductor2;
