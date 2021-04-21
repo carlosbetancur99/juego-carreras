@@ -23,14 +23,14 @@ public class GenerarPistaUseCase {
     
     private static String obtenerNombrePista(){
         for (NombrePista nombrePista : NombrePista.values()) {
-            if(generarIndeceNombrePiosta(NombrePista.values().length) == nombrePista.ordinal()){
+            if(generarIndeceNombrePista(NombrePista.values().length) == nombrePista.ordinal()){
                 return nombrePista.name();
             }
         }        
-        return NombrePista.ROCK.name();
+        return NombrePista.Suzuka.name();
     }
     
-    private static Integer generarIndeceNombrePiosta(Integer maximoNombre){        
+    private static Integer generarIndeceNombrePista(Integer maximoNombre){        
         return new Random().nextInt((maximoNombre - 1) + 1) + 1;        
     }            
 }

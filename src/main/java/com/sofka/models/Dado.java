@@ -26,4 +26,11 @@ public class Dado {
     public void lanzar(){                
         this.valor = new Random().nextInt((LIMITED_MAXIMO - LIMITED_MINIMO) + 1) + LIMITED_MINIMO;
     }
+
+    @Override
+    public String toString() {
+        return "Dado{" + "valor=" + valor + '}';
+    }
+    
+    
 }

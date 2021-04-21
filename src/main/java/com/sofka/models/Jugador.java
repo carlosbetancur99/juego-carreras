@@ -9,5 +9,15 @@ public class Jugador {
         this.nombre = nombre;
         this.turno = Boolean.FALSE;
         this.dado = new Dado();
-    }  
+    }
+
+    @Override
+    public String toString() {
+        return "Jugador{" + "nombre=" + nombre + ", turno=" + turno + ", dado=" + dado + '}';
+    }
+
+
+    
+    
+    
 }

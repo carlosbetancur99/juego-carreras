@@ -6,6 +6,10 @@ public class Pista {
     // Constantes
     private static final Integer LONGITUD_KM = 5;
 
+    public static Integer getLONGITUD_KM() {
+        return LONGITUD_KM;
+    }
+
      // Atributos
     private String nombrePista;
     private List<Carril> carriles;

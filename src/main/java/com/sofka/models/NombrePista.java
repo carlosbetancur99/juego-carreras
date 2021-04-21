@@ -1,5 +1,5 @@
 package com.sofka.models;
 
 public enum NombrePista {
-    ROCK, PINK, VOLCAN, RIO, LAGO
+    Nurburgring,Monaco,Francorchamps,Mans, LagunaSeca,Monza,Silverstone,Indianápolis,Suzuka,CircuitoInterlagos
 }

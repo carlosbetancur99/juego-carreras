@@ -22,6 +22,11 @@ public class Carro {
     public void aumentarRecorrido(Integer distancia){
         this.distanciaRecorrida = distanciaRecorrida + distancia;
     }
+
+    @Override
+    public String toString() {
+        return "Carro{" + "nombre=" + nombre + ", marca=" + marca + ", distanciaRecorrida=" + distanciaRecorrida + ", conductor=" + conductor + '}';
+    }
     
     
 }
