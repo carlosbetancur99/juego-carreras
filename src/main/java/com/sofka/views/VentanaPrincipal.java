@@ -4,8 +4,13 @@ import com.sofka.views.paneles.PanelSeisJugadores;
 import com.sofka.views.paneles.PanelCincoJugadores;
 import com.sofka.views.paneles.PanelCuatroJugadores;
 import com.sofka.models.Carril;
+import com.sofka.models.Carro;
+import com.sofka.models.Conductor;
 import com.sofka.models.Dado;
+import com.sofka.models.Jugador;
 import com.sofka.models.Pista;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class VentanaPrincipal extends javax.swing.JFrame {
@@ -113,20 +118,38 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_seleccionJugadoresActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        String itemSeleecionado = (String) seleccionJugadores.getSelectedItem();
-        if ("4 jugadores".equals(itemSeleecionado)) {
 
-            VentanaConfiguracionesJuego vc = new VentanaConfiguracionesJuego();
-            PanelCuatroJugadores p4 = new PanelCuatroJugadores();
-            vc.setContentPane(p4);
-            vc.setVisible(true);
-            this.setVisible(false);
+        String itemSeleecionado = (String) seleccionJugadores.getSelectedItem();
+        VentanaConfiguracionesJuego vc = new VentanaConfiguracionesJuego();
+       
+        
+        if ("4 jugadores".equals(itemSeleecionado)) {
+            
+            List<Carro> carro = new ArrayList<>();
+            
+            for (int i = 0; i < 4; i++) {
+                VentanaCarrera ventanaCarrera = new VentanaCarrera();
+                ventanaCarrera.setVisible(Boolean.TRUE);
+                
+                carro.add(new Carro(
+                        ventanaCarrera.getNombreCarro(),
+                        ventanaCarrera.getMarcaCarro(),
+                        new Conductor(ventanaCarrera.getNombreJugador())));
+            }   
+            
+            carro.stream()
+                    .forEach(c -> System.out.println(c));
+            
+//            PanelCuatroJugadores p4 = new PanelCuatroJugadores();
+//            vc.setSize(660, 666);
+//            vc.setContentPane(p4);
+//            vc.setVisible(true);
+//            this.setVisible(false);
 
         }
 
-        if ("5 jugadores".equals(itemSeleecionado)) {
-
-           VentanaConfiguracionesJuego vc = new VentanaConfiguracionesJuego();
+        if ("5 jugadores".equals(itemSeleecionado)) {           
+           vc.setSize(653, 666);
             PanelCincoJugadores p5 = new PanelCincoJugadores();
             vc.setContentPane(p5);
             vc.setVisible(true);
@@ -135,9 +158,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
 
         if ("6 jugadores".equals(itemSeleecionado)) {
-
-            VentanaConfiguracionesJuego vc = new VentanaConfiguracionesJuego();
             PanelSeisJugadores p6 = new PanelSeisJugadores();
+            vc.setSize(660, 666);
             vc.setContentPane(p6);
             vc.setVisible(true);
             this.setVisible(false);
