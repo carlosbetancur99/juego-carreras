@@ -27,6 +27,38 @@ public class Carro {
     public String toString() {
         return "Carro{" + "nombre=" + nombre + ", marca=" + marca + ", distanciaRecorrida=" + distanciaRecorrida + ", conductor=" + conductor + '}';
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public Integer getDistanciaRecorrida() {
+        return distanciaRecorrida;
+    }
+
+    public void setDistanciaRecorrida(Integer distanciaRecorrida) {
+        this.distanciaRecorrida = distanciaRecorrida;
+    }
+
+    public Conductor getConductor() {
+        return conductor;
+    }
+
+    public void setConductor(Conductor conductor) {
+        this.conductor = conductor;
+    }
     
     
 }

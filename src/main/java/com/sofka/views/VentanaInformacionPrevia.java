@@ -1,21 +1,25 @@
 package com.sofka.views;
 
 import com.sofka.models.Carro;
+import com.sofka.models.Conductor;
 import com.sofka.models.Pista;
 import com.sofka.usecase.GenerarPistaUseCase;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 public class VentanaInformacionPrevia extends javax.swing.JFrame {
 
      private Pista pista;
      private DefaultTableModel diseñoTable;
-     
+     private List<Carro> carro = new ArrayList<>();
     
     public VentanaInformacionPrevia(Integer carriles) {
 
         initComponents();
         this.crearTabla();
+        this.agregraDatos();
        //mostrar la pista y sus carriles
        pista = GenerarPistaUseCase.generarPista(carriles);        
        lblNombrePista.setText(pista.getNombrePista());   
@@ -147,6 +151,40 @@ public class VentanaInformacionPrevia extends javax.swing.JFrame {
         this.tableInformacion.setModel(diseñoTable);
         this.tableInformacion.setForeground(new Color(3,69,102));
         
+    }
+    
+    public void agregraDatos(){
+        
+            
+
+            for (int i = 1; i <= 4; i++) {
+                VentanaDialogRegistro ventanadialogRegistro = new VentanaDialogRegistro(this, true,i);
+                ventanadialogRegistro.setVisible(Boolean.TRUE);
+                this.setVisible(Boolean.FALSE);
+                
+
+                carro.add(new Carro(
+                        ventanadialogRegistro.getNombreCarro(),
+                        ventanadialogRegistro.getMarcaCarro(),
+                        new Conductor(ventanadialogRegistro.getNombreJugador())));
+              
+            }
+            
+            
+            
+            String algo = carro.get(0).toString();
+            System.out.println(algo);
+            
+            //carro.forEach((n)-> System.out.println(n));
+   
+            for(Carro carros : carro){
+               this.diseñoTable.addRow(new Object[]{
+                 
+               });
+                
+            }
+           
+            
     }
 
 
