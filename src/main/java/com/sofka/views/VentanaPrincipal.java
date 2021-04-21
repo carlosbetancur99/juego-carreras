@@ -147,11 +147,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
             VentanaInformacionPrevia vI = new VentanaInformacionPrevia(valorVentanas);
             vI.setVisible(Boolean.TRUE);
-            
-            
-
-
-
     }//GEN-LAST:event_btnIniciarActionPerformed
 
    

@@ -16,6 +16,30 @@ public class Jugador {
         return "Jugador{" + "nombre=" + nombre + ", turno=" + turno + ", dado=" + dado + '}';
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Boolean getTurno() {
+        return turno;
+    }
+
+    public void setTurno(Boolean turno) {
+        this.turno = turno;
+    }
+
+    public Dado getDado() {
+        return dado;
+    }
+
+    public void setDado(Dado dado) {
+        this.dado = dado;
+    }
+
 
     
     

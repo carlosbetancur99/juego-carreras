@@ -3,6 +3,7 @@ package com.sofka.views;
 import com.sofka.models.Carro;
 import com.sofka.models.Conductor;
 import com.sofka.models.Pista;
+import com.sofka.usecase.AgregarCarroACarrilUseCase;
 import com.sofka.usecase.GenerarPistaUseCase;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -13,15 +14,16 @@ public class VentanaInformacionPrevia extends javax.swing.JFrame {
 
      private Pista pista;
      private DefaultTableModel diseñoTable;
-     private List<Carro> carro = new ArrayList<>();
+     private List<Carro> carros = new ArrayList<>();
     
     public VentanaInformacionPrevia(Integer carriles) {
 
         initComponents();
+        pista = GenerarPistaUseCase.generarPista(carriles); 
         this.crearTabla();
         this.agregraDatos();
        //mostrar la pista y sus carriles
-       pista = GenerarPistaUseCase.generarPista(carriles);        
+       
        lblNombrePista.setText(pista.getNombrePista());   
        lblNumCarriles.setText(String.valueOf(pista.getCarriles().size()));
        lblDistancia.setText(pista.getLONGITUD_KM().toString() );
@@ -154,36 +156,24 @@ public class VentanaInformacionPrevia extends javax.swing.JFrame {
     }
     
     public void agregraDatos(){
-        
-            
-
             for (int i = 1; i <= 4; i++) {
                 VentanaDialogRegistro ventanadialogRegistro = new VentanaDialogRegistro(this, true,i);
                 ventanadialogRegistro.setVisible(Boolean.TRUE);
-                this.setVisible(Boolean.FALSE);
-                
+                this.setVisible(Boolean.FALSE);                
 
-                carro.add(new Carro(
+                carros.add(new Carro(
                         ventanadialogRegistro.getNombreCarro(),
                         ventanadialogRegistro.getMarcaCarro(),
-                        new Conductor(ventanadialogRegistro.getNombreJugador())));
-              
+                        new Conductor(ventanadialogRegistro.getNombreJugador())));              
             }
             
+            pista = AgregarCarroACarrilUseCase.agregarCarrosACarriles(pista, carros);
             
-            
-            String algo = carro.get(0).toString();
-            System.out.println(algo);
-            
-            //carro.forEach((n)-> System.out.println(n));
-   
-            for(Carro carros : carro){
-               this.diseñoTable.addRow(new Object[]{
-                 
-               });
-                
-            }
-           
+            pista.getCarriles().forEach(carril ->{
+                this.diseñoTable.addRow(new Object[]{
+                        carril.getCarro().getConductor().getNombre(), carril.getCarro().getNombre(), carril.getNumeroCarril()
+                   });
+            });    
             
     }
 

@@ -11,4 +11,22 @@ public class Carril {
     public Carril(Integer numeroCarril){
         this.numeroCarril = numeroCarril;
     }
+
+    public Integer getNumeroCarril() {
+        return numeroCarril;
+    }
+
+    public void setNumeroCarril(Integer numeroCarril) {
+        this.numeroCarril = numeroCarril;
+    }
+
+    public Carro getCarro() {
+        return carro;
+    }
+
+    public void setCarro(Carro carro) {
+        this.carro = carro;
+    }
+    
+    
 }
