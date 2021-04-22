@@ -7,6 +7,8 @@ public class Carro {
     private Integer distanciaRecorrida;
     private Conductor conductor;
 
+    
+
     public Carro(String nombreCarro, String marcaCarro, Conductor conductor) {
         this.marca = marcaCarro;
         this.nombre = nombreCarro;
@@ -51,6 +53,8 @@ public class Carro {
     public void setDistanciaRecorrida(Integer distanciaRecorrida) {
         this.distanciaRecorrida = distanciaRecorrida;
     }
+    
+
 
     public Conductor getConductor() {
         return conductor;

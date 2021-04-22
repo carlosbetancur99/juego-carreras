@@ -11,10 +11,6 @@ public class Jugador {
         this.dado = new Dado();
     }
 
-    @Override
-    public String toString() {
-        return "Jugador{" + "nombre=" + nombre + ", turno=" + turno + ", dado=" + dado + '}';
-    }
 
     public String getNombre() {
         return nombre;
@@ -42,6 +38,10 @@ public class Jugador {
 
 
     
+    @Override
+    public String toString() {
+        return "Jugador{" + "nombre=" + nombre + ", turno=" + turno + ", dado=" + dado + '}';
+    }
     
     
 }
