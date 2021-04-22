@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     
-    private Pista pista;
+    
     
     
     public VentanaPrincipal() {
@@ -143,30 +143,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         //recuperar el valor numero de jugadores
         Integer valorVentanas= Integer.parseInt(itemSeleecionado.substring(0,1));
        
-       
+         this.setVisible(Boolean.FALSE);
 
-            List<Carro> carro = new ArrayList<>();
-
-            for (int i = 1; i <= valorVentanas; i++) {
-                VentanaDialogRegistro ventanadialogRegistro = new VentanaDialogRegistro(this, true,i);
-                ventanadialogRegistro.setVisible(Boolean.TRUE);
-                this.setVisible(Boolean.FALSE);
-                
-
-                carro.add(new Carro(
-                        ventanadialogRegistro.getNombreCarro(),
-                        ventanadialogRegistro.getMarcaCarro(),
-                        new Conductor(ventanadialogRegistro.getNombreJugador())));
-              
-            }
-   
-           
-            
             VentanaInformacionPrevia vI = new VentanaInformacionPrevia(valorVentanas);
             vI.setVisible(Boolean.TRUE);
-
-
-
     }//GEN-LAST:event_btnIniciarActionPerformed
 
    

@@ -23,8 +23,8 @@ public class Dado {
         this.valor = valor;
     }
     
-    public void lanzar(){                
-        this.valor = new Random().nextInt((LIMITED_MAXIMO - LIMITED_MINIMO) + 1) + LIMITED_MINIMO;
+    public Integer lanzar(){                
+        return valor = new Random().nextInt((LIMITED_MAXIMO - LIMITED_MINIMO) + 1) + LIMITED_MINIMO;
     }
 
     @Override
