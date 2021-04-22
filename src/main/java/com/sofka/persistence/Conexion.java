@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
+
 public class Conexion {
    
     public static final String USUARIO_BDA="root";
@@ -16,7 +17,7 @@ public class Conexion {
     Connection conexion=null;
     
     
-    public Connection conexion(){
+    public Connection conectar(){
         
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -32,5 +33,16 @@ public class Conexion {
         System.err.println("la conexion ha sido exitosa");        
         return conexion;
     }
+
+  public void cerrar(){
+        try {
+            conexion.close();
+        } catch (SQLException ex) {
+           ex.printStackTrace();
+        }
+  }
+    
+    
+    
     
 }
